@@ -1,0 +1,8 @@
+Protocol -> http
+Host -> google
+Domain -> co.in
+Query Parameter -> Map(cah -> dcksc, dcgb -> dssvs)
+Protocol -> http
+Host -> google
+Domain -> co.in
+Query Parameter -> Map(cah -> dcksc, dcgb -> dssv)
