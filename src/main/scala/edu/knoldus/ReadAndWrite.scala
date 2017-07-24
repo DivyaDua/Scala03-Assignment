@@ -34,23 +34,8 @@ trait ReadAndWrite {
 
   def createDirectory(dirName: String): File= {
     val dir: File = new File(dirName)
-
-    if (!dir.exists) {
-      val successful = dir.mkdir
-      if (successful) { // creating the directory succeeded
-        println("!!")
-        dir
-      }
-      else { // creating the directory failed
-        throw new Exception("failed trying to create the directory")
-      }
-    }
-
-    else { // creating the directory failed
-      throw new Exception("Directory already exists")
-      /*val dirNew: File = new File(dirName + "1")
-      dirNew*/
-    }
+    dir.mkdir
+    dir
   }
 
 }

@@ -7,7 +7,7 @@ class Part1Test extends FunSuite {
 
   test("testing upper case method"){
     val dir: File = new File("src/test/part1test1")
-    assert(new Part1().uppercaseTask(dir) == List(true, true))
+    assert(new Part1().uppercaseTask(dir) == List(true, true, true))
   }
 
   test("testing write output method"){
