@@ -11,8 +11,8 @@ class Part2Test extends FunSuite {
   }
 
   test("testing write output method in part 2"){
-    val sourceFile = new File("src/test/part2test1/testFile1.txt")
-    val destDir = new File("src/test/part2test2")
+    val sourceFile = new File("src/test/part1test2/testFile.txt")
+    val destDir = new File("src/test/part1test2")
 
     assert(new Part2().writeOutput(sourceFile, destDir ) == true)
 

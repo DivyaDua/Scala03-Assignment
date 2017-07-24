@@ -19,19 +19,13 @@ class ReadAndWriteTest extends FunSuite with ReadAndWrite{
   }
 
   test("testing check extension method"){
-    assert(checkExtension(List(file1, file2, file3)) == List(file1, file2))
+    assert(checkExtension(List(file1, file2, file3, file4)) == List(file1, file2, file4))
   }
 
   test("testing create directory method"){
     assert(createDirectory("src/test/createDirTest") == dir2)
   }
 
-  /*test("testing create directory method for exception"){
-    intercept[Exception]{
-      createDirectory("src/test/part1test1")
-    }
-  }
-*/
   test("testing write files to directory method"){
     assert(writeFilesToDirectory(file1, dir1, "Hello Divya") == true)
   }

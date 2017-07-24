@@ -27,20 +27,16 @@ class Part2 extends ReadAndWrite{
   def writeOutput(sourceFile: File, destinationDir: File): Boolean = {
 
     //val Word = "\\b([A-Za-z\\-])+\\b".r
-    val counter = Source.fromFile(sourceFile)
-      .getLines.flatMap(_.split("\\W+"))
-      .toList.map(_.toLowerCase)
-      .groupBy(identity)
-      .mapValues(_.length)
+    val content = Source.fromFile(sourceFile).getLines.mkString.toLowerCase
 
-    //println(counter)
+    val regex = """[a-zA-Z]+""".r
 
-    val l:List[String] = counter.toList.map(_._1.toLowerCase)
-    val wordsCount = l.length
+    val words = for{ s <- regex.findAllIn(content)
+    }yield s
 
-    val answer = "Number of words : " + wordsCount
+    val mapOfWords = words.toList.groupBy(identity).mapValues(_.length).mkString("\n")
 
-    writeFilesToDirectory(sourceFile, destinationDir, answer)
+    writeFilesToDirectory(sourceFile, destinationDir, mapOfWords)
   }
 
 }

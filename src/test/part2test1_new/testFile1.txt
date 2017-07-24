@@ -1,1 +1,4 @@
-Number of words : 4
+beautiful -> 1
+people -> 1
+worldhello -> 1
+hello -> 1

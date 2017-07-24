@@ -20,14 +20,10 @@ object parsingURL{
       val hostDomain = hostDomainPart(0).split('.')
       val host = hostDomain(1)
 
-      val domain = if (hostDomain.length > 3) {
-        hostDomain(2) + "." + hostDomain(3)
-      }
-      else {
-        hostDomain(2)
-      }
+      //val hostDomainPartReverse = hostDomain.reverse.takeWhile(_ == host).rev
 
-      //if(hostDomainPart.length > 1) {
+      val domain = hostDomain.reverse.takeWhile(_ != host).reverse.mkString(".")
+
       val queryPart = hostDomainPart(1).split("\\?")(1)
       val queryArray = queryPart.split("&")
 
@@ -38,9 +34,6 @@ object parsingURL{
 
       val query = arr.toList.toMap
 
-      /*else {
-        None
-      }*/
       Some(protocol,host,domain,query)
     }
   }
@@ -63,12 +56,13 @@ class Part3 extends ReadAndWrite{
     try {
       val list: List[File] = checkExtension(List(sourceFile))
 
-      val file = list(0)
+
 
       if (list.isEmpty) {
         throw new FileNotFoundException("File is not readable")
       }
       else {
+        val file = list(0)
         val fileContent = Source.fromFile(file).getLines.mkString("\n")
 
         val fileContentArray: Array[String] = fileContent.split("\n")
@@ -77,7 +71,7 @@ class Part3 extends ReadAndWrite{
         } yield output
 
         //writing to new file
-        new PrintWriter("Output_" + file.getName) {
+        new PrintWriter("src/test/Output_" + file.getName) {
           write(fileOutput.mkString)
           close
         }
